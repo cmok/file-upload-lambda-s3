@@ -12,16 +12,18 @@ class App extends Component {
   }
 
   onFileUpload = () => {
-    const formData = new FormData();
-    formData.append(
-      "demo file",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    )
-    // Call API to upload the file
-    console.log(formData)
-    this.setState({selectedFile: null})
-    this.setState({fileUploadedSuccessfully: true})
+    if (this.setState.selectedFile) {
+      const formData = new FormData();
+      formData.append(
+        "demo file",
+        this.state.selectedFile,
+        this.state.selectedFile.name
+      )
+      // Call API to upload the file
+      console.log(formData)
+      this.setState({selectedFile: null})
+      this.setState({fileUploadedSuccessfully: true})
+    }
   }
 
   fileData = () => {
@@ -55,7 +57,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h2>File Upload</h2>
         <h3>File upload with React and a Servicelss API</h3>
         <div>
